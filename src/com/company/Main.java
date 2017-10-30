@@ -5,22 +5,24 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		System.out.println("Введите число степени двойки:");
-		int Num = in.nextInt();
-		if (Num%2!=0)
-			System.out.println("Число не является сетепью двойки");
-			Num = in.nextInt();
+		System.out.print("Введите число для проверки:");
+		int num = in.nextInt();
+		if (num > 67108864) {
+			System.out.print("Число превышает максимальное.Введите другое число:");
+			num = in.nextInt();
 		}
-		int Two = 2;
-		int TwoPow = 0;
-		for (double i = 0; i < 26; i++) {
-			TwoPow += (int) Math.pow(Two, i);
-			if (Num == TwoPow) {
-				System.out.println("Данное число расположенно между два в степенни " + i + " и " + (i + 2));
+		int two = 2;
+		int twoPow = 1;
+		for (int i = 0; i < 25; i++) {
+			twoPow = (int) Math.pow(two, i);
+			if (twoPow < num && num < twoPow * 2) {
+				System.out.println("Данное число расположенно между два в степенни " + i + " и " + (i + 1));
 			}
-			else (Num%2!=0)
-					System.out.println("Число не является сетепью двойки");
+			if (num == twoPow) {
+				System.out.println("Данное число расположенно между два в степенни " + (i - 1) + " и " + (i + 1));
+			}
 		}
 
 	}
+
 }
